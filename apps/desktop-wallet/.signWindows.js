@@ -127,7 +127,8 @@ ${process.env.WINDOWS_SIGN_PASSWORD ? '' : 'WINDOWS_SIGN_PASSWORD'}
 ${process.env.WINDOWS_SIGN_CREDENTIAL_ID ? '' : 'WINDOWS_SIGN_CREDENTIAL_ID'}
 ${process.env.WINDOWS_SIGN_TOTP_SECRET ? '' : 'WINDOWS_SIGN_TOTP_SECRET'}
 `)
-    process.exit(1)
+    console.warn('\nSkipping signing (credentials missing).')
+    return
   }
 }
 
