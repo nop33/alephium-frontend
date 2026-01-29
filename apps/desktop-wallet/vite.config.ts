@@ -42,12 +42,7 @@ export default defineConfig(({ mode }) => ({
     },
     include: ['@alephium/shared-crypto'] // To allow for using npm link https://vitejs.dev/guide/dep-pre-bundling.html#monorepos-and-linked-dependencies
   },
-  plugins: [
-    react(),
-    viteTsconfigPaths(),
-    svgrPlugin(),
-    mode !== 'test' && nodePolyfills()
-  ],
+  plugins: [react(), viteTsconfigPaths(), svgrPlugin(), mode !== 'test' && nodePolyfills()],
   test: {
     globals: true,
     environment: 'jsdom',
