@@ -24,7 +24,7 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 import svgrPlugin from 'vite-plugin-svgr'
 import viteTsconfigPaths from 'vite-tsconfig-paths'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       events: 'rollup-plugin-node-polyfills/polyfills/events'
@@ -33,7 +33,12 @@ export default defineConfig({
   optimizeDeps: {
     include: ['@alephium/shared-crypto'] // To allow for using npm link https://vitejs.dev/guide/dep-pre-bundling.html#monorepos-and-linked-dependencies
   },
-  plugins: [react(), viteTsconfigPaths(), svgrPlugin(), nodePolyfills()],
+  plugins: [
+    react(),
+    viteTsconfigPaths(),
+    svgrPlugin(),
+    mode !== 'test' && nodePolyfills()
+  ],
   test: {
     globals: true,
     environment: 'happy-dom',
@@ -50,4 +55,4 @@ export default defineConfig({
       include: [/node_modules/, /shared-crypto/]
     }
   }
-})
+}))
