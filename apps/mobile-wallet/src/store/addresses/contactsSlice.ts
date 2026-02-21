@@ -24,7 +24,7 @@ import {
 } from '@alephium/shared'
 import { createSlice, EntityState } from '@reduxjs/toolkit'
 
-import { walletDeleted, walletUnlocked } from '~/store/wallet/walletActions'
+import { contactsLoaded, walletDeleted } from '~/store/wallet/walletActions'
 
 type ContactsState = EntityState<Contact>
 
@@ -36,7 +36,7 @@ export const contactsSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(walletUnlocked, (state, action) => contactsAdapter.setAll(state, action.payload.contacts))
+      .addCase(contactsLoaded, (state, action) => contactsAdapter.setAll(state, action.payload))
       .addCase(contactStoredInPersistentStorage, contactsAdapter.upsertOne)
       .addCase(contactDeletedFromPersistentStorage, contactsAdapter.removeOne)
       .addCase(walletDeleted, resetState)

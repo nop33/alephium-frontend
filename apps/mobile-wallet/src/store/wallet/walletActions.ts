@@ -16,11 +16,16 @@ You should have received a copy of the GNU Lesser General Public License
 along with the library. If not, see <http://www.gnu.org/licenses/>.
 */
 
+import { Contact } from '@alephium/shared'
 import { createAction } from '@reduxjs/toolkit'
 
 import { GeneratedWallet, WalletMetadata, WalletState } from '~/types/wallet'
 
 export const walletUnlocked = createAction<WalletMetadata>('wallets/walletUnlocked')
+
+export const contactsLoaded = createAction<Contact[]>('wallets/contactsLoaded')
+
+export const walletsListUpdated = createAction<WalletMetadata[]>('wallets/walletsListUpdated')
 
 export const newWalletGenerated = createAction<GeneratedWallet>('wallets/newWalletGenerated')
 

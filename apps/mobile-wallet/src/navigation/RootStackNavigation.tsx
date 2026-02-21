@@ -38,11 +38,13 @@ import ReceiveNavigation from '~/navigation/ReceiveNavigation'
 import RootStackParamList from '~/navigation/rootStackRoutes'
 import SendNavigation from '~/navigation/SendNavigation'
 import { appInstallationTimestampMissing, rememberAppInstallation, wasAppUninstalled } from '~/persistent-storage/app'
+import { getContacts } from '~/persistent-storage/contacts'
 import { loadBiometricsSettings } from '~/persistent-storage/settings'
 import {
   deleteDeprecatedWallet,
   getDeprecatedStoredWallet,
   getStoredWallet,
+  getWalletsMetadata,
   migrateDeprecatedMnemonic,
   storedWalletExists
 } from '~/persistent-storage/wallet'
@@ -67,7 +69,7 @@ import PublicKeysScreen from '~/screens/PublicKeysScreen'
 import EditWalletNameScreen from '~/screens/Settings/EditWalletName'
 import SettingsScreen from '~/screens/Settings/SettingsScreen'
 import { routeChanged } from '~/store/appSlice'
-import { mnemonicMigrated, walletUnlocked } from '~/store/wallet/walletActions'
+import { contactsLoaded, mnemonicMigrated, walletUnlocked, walletsListUpdated } from '~/store/wallet/walletActions'
 import { showExceptionToast, showToast } from '~/utils/layout'
 import { isNavStateRestorable, resetNavigation, rootStackNavigationRef } from '~/utils/navigation'
 
@@ -168,6 +170,8 @@ const AppUnlockModal = () => {
   const initializeAppWithStoredWallet = useCallback(async () => {
     try {
       dispatch(walletUnlocked(await getStoredWallet()))
+      dispatch(walletsListUpdated(await getWalletsMetadata()))
+      dispatch(contactsLoaded(await getContacts()))
 
       if (!lastNavigationState) resetNavigation(navigation)
 

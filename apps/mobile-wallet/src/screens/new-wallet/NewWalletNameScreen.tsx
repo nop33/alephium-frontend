@@ -30,9 +30,10 @@ import CenteredInstructions, { Instruction } from '~/components/text/CenteredIns
 import { useAppDispatch, useAppSelector } from '~/hooks/redux'
 import { useBiometrics } from '~/hooks/useBiometrics'
 import RootStackParamList from '~/navigation/rootStackRoutes'
-import { generateAndStoreWallet } from '~/persistent-storage/wallet'
+import { getContacts } from '~/persistent-storage/contacts'
+import { generateAndStoreWallet, getWalletsMetadata } from '~/persistent-storage/wallet'
 import { syncLatestTransactions } from '~/store/addressesSlice'
-import { newWalletGenerated } from '~/store/wallet/walletActions'
+import { contactsLoaded, newWalletGenerated, walletsListUpdated } from '~/store/wallet/walletActions'
 import { newWalletNameEntered } from '~/store/walletGenerationSlice'
 import { DEFAULT_MARGIN } from '~/style/globalStyle'
 import { showExceptionToast } from '~/utils/layout'
@@ -69,6 +70,8 @@ const NewWalletNameScreen = ({ navigation, ...props }: NewWalletNameScreenProps)
         const wallet = await generateAndStoreWallet(name)
 
         dispatch(newWalletGenerated(wallet))
+        dispatch(walletsListUpdated(await getWalletsMetadata()))
+        dispatch(contactsLoaded(await getContacts()))
         dispatch(syncLatestTransactions(wallet.firstAddress.hash))
 
         sendAnalytics({ event: 'Created new wallet' })

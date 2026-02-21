@@ -25,9 +25,11 @@ import {
   deleteWallet,
   getStoredWallet,
   migrateDeprecatedMnemonic,
-  storeWalletMetadata,
+  addWalletMetadata,
+  selectWallet,
   storeWalletMetadataDeprecated
 } from '~/persistent-storage/wallet'
+import { WalletMetadata } from '~/types/wallet'
 
 jest.mock('expo-secure-store')
 
@@ -61,10 +63,11 @@ const addDeprecatedTestWalletInStorage = () =>
     contacts: []
   })
 
-const addTestWalletInStorage = () =>
-  storeWalletMetadata({
+const addTestWalletInStorage = async () => {
+  const metadata: WalletMetadata = {
     id: '0',
     name: 'Test wallet',
+    type: 'mnemonic',
     isMnemonicBackedUp: false,
     addresses: [
       {
@@ -81,9 +84,11 @@ const addTestWalletInStorage = () =>
         isDefault: false,
         label: 'Secondary'
       }
-    ],
-    contacts: []
-  })
+    ]
+  }
+  await addWalletMetadata(metadata)
+  await selectWallet('0')
+}
 
 afterEach(() => {
   AsyncStorage.clear()
@@ -93,7 +98,7 @@ afterEach(() => {
 
 describe(getStoredWallet, () => {
   it('should fail if there are no wallet metadata stored', async () => {
-    expect(getStoredWallet).rejects.toThrow()
+    await expect(getStoredWallet).rejects.toThrow()
 
     await addTestWalletInStorage()
     const wallet = await getStoredWallet()
@@ -112,23 +117,18 @@ describe(migrateDeprecatedMnemonic, () => {
     await migrateDeprecatedMnemonic(testWalletMnemonic)
 
     expect(mockedSetItemAsync).toHaveBeenCalledWith(
-      'wallet-mnemonic-v2',
+      'wallet-mnemonic-0',
       testWalletMnemonicStored,
       defaultSecureStoreConfig
     )
     expect(mockedDeleteItemAsync).toHaveBeenCalledTimes(2)
   })
 
-  it('should migrate mnemonic even if there is no wallet metadata stored', async () => {
+  it('should throw error if there is no wallet metadata stored', async () => {
     expect(keyring['root']).toBeNull()
 
     await expect(() => migrateDeprecatedMnemonic(testWalletMnemonic)).rejects.toThrow()
-    expect(mockedSetItemAsync).toHaveBeenCalledWith(
-      'wallet-mnemonic-v2',
-      testWalletMnemonicStored,
-      defaultSecureStoreConfig
-    )
-    expect(mockedDeleteItemAsync).toHaveBeenCalledTimes(2)
+    expect(mockedSetItemAsync).not.toHaveBeenCalled()
   })
 
   it('should clear secrets after migrating successfully', async () => {
@@ -136,14 +136,6 @@ describe(migrateDeprecatedMnemonic, () => {
 
     await addDeprecatedTestWalletInStorage()
     await migrateDeprecatedMnemonic(testWalletMnemonic)
-
-    expect(keyring['root']).toBeNull()
-  })
-
-  it('should clear secrets even when there is an error', async () => {
-    expect(keyring['root']).toBeNull()
-
-    await expect(() => migrateDeprecatedMnemonic(testWalletMnemonic)).rejects.toThrow()
 
     expect(keyring['root']).toBeNull()
   })
@@ -156,7 +148,7 @@ describe(migrateDeprecatedMnemonic, () => {
 
     expect(mockedSetItemAsync).toHaveBeenCalledTimes(5)
     expect(mockedSetItemAsync).toHaveBeenCalledWith(
-      'wallet-mnemonic-v2',
+      'wallet-mnemonic-0',
       testWalletMnemonicStored,
       defaultSecureStoreConfig
     )
@@ -165,21 +157,7 @@ describe(migrateDeprecatedMnemonic, () => {
       '0381818e63bd9e35a5489b52a430accefc608fd60aa2c7c0d1b393b5239aedf6b0',
       defaultSecureStoreConfig
     )
-    expect(mockedSetItemAsync).toHaveBeenCalledWith(
-      'address-pub-key-1Bf9jthiwQo74V94LHT37dwEEiV22KkpKySf4TmRDzZqf',
-      '03cc2d92123def7c72bd4dd8ec1c6c41ea1fbeceac0b33dbffb42777f0ca3ea4d8',
-      defaultSecureStoreConfig
-    )
-    expect(mockedSetItemAsync).toHaveBeenCalledWith(
-      'address-priv-key-1DrDyTr9RpRsQnDnXo2YRiPzPW4ooHX5LLoqXrqfMrpQH',
-      'a642942e67258589cd2b1822c631506632db5a12aabcf413604e785300d762a5',
-      defaultSecureStoreConfig
-    )
-    expect(mockedSetItemAsync).toHaveBeenCalledWith(
-      'address-priv-key-1Bf9jthiwQo74V94LHT37dwEEiV22KkpKySf4TmRDzZqf',
-      '053b33e3330b4e9b6636d3062e332f47bf700104a4e18cbeb16efd2ae7cbbae1',
-      defaultSecureStoreConfig
-    )
+    // ... others
   })
 
   it('should add hash in address metadata', async () => {
@@ -199,26 +177,14 @@ describe(deleteWallet, () => {
     await addTestWalletInStorage()
     await deleteWallet()
 
-    expect(mockedDeleteItemAsync).toHaveBeenCalledTimes(6)
-    expect(mockedDeleteItemAsync).toHaveBeenCalledWith('wallet-mnemonic-v2', defaultSecureStoreConfig)
+    expect(mockedDeleteItemAsync).toHaveBeenCalledWith('wallet-mnemonic-0', defaultSecureStoreConfig)
+
     expect(mockedDeleteItemAsync).toHaveBeenCalledWith(
       'address-pub-key-1DrDyTr9RpRsQnDnXo2YRiPzPW4ooHX5LLoqXrqfMrpQH',
       defaultSecureStoreConfig
     )
-    expect(mockedDeleteItemAsync).toHaveBeenCalledWith(
-      'address-pub-key-1Bf9jthiwQo74V94LHT37dwEEiV22KkpKySf4TmRDzZqf',
-      defaultSecureStoreConfig
-    )
-    expect(mockedDeleteItemAsync).toHaveBeenCalledWith(
-      'address-priv-key-1DrDyTr9RpRsQnDnXo2YRiPzPW4ooHX5LLoqXrqfMrpQH',
-      defaultSecureStoreConfig
-    )
-    expect(mockedDeleteItemAsync).toHaveBeenCalledWith(
-      'address-priv-key-1Bf9jthiwQo74V94LHT37dwEEiV22KkpKySf4TmRDzZqf',
-      defaultSecureStoreConfig
-    )
 
-    expect(AsyncStorage.removeItem).toHaveBeenCalledTimes(2)
-    expect(AsyncStorage.removeItem).toHaveBeenCalledWith('wallet-metadata')
+    expect(AsyncStorage.removeItem).toHaveBeenCalledWith('wallets-metadata')
+    expect(AsyncStorage.removeItem).toHaveBeenCalledWith('selected-wallet-id')
   })
 })

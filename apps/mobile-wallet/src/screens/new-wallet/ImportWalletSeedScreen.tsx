@@ -36,9 +36,10 @@ import SpinnerModal from '~/components/SpinnerModal'
 import { useAppDispatch, useAppSelector } from '~/hooks/redux'
 import { useBiometrics } from '~/hooks/useBiometrics'
 import RootStackParamList from '~/navigation/rootStackRoutes'
-import { generateAndStoreWallet } from '~/persistent-storage/wallet'
+import { getContacts } from '~/persistent-storage/contacts'
+import { generateAndStoreWallet, getWalletsMetadata } from '~/persistent-storage/wallet'
 import { syncLatestTransactions } from '~/store/addressesSlice'
-import { newWalletGenerated } from '~/store/wallet/walletActions'
+import { contactsLoaded, newWalletGenerated, walletsListUpdated } from '~/store/wallet/walletActions'
 import { BORDER_RADIUS, DEFAULT_MARGIN, VERTICAL_GAP } from '~/style/globalStyle'
 import { showExceptionToast } from '~/utils/layout'
 import { resetNavigation } from '~/utils/navigation'
@@ -110,6 +111,8 @@ const ImportWalletSeedScreen = ({ navigation, ...props }: ImportWalletSeedScreen
       const wallet = await generateAndStoreWallet(name, mnemonicToImport)
 
       dispatch(newWalletGenerated(wallet))
+      dispatch(walletsListUpdated(await getWalletsMetadata()))
+      dispatch(contactsLoaded(await getContacts()))
       dispatch(syncLatestTransactions(wallet.firstAddress.hash))
 
       sendAnalytics({ event: 'Imported wallet', props: { note: 'Entered mnemonic manually' } })

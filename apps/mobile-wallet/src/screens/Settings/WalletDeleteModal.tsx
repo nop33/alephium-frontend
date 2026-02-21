@@ -26,10 +26,14 @@ import { ModalContent, ModalContentProps } from '~/components/layout/ModalConten
 import { BottomModalScreenTitle, ScreenSection } from '~/components/layout/Screen'
 import SpinnerModal from '~/components/SpinnerModal'
 import { useWalletConnectContext } from '~/contexts/walletConnect/WalletConnectContext'
+import { NavigationProp, useNavigation } from '@react-navigation/native'
+
 import { useAppDispatch, useAppSelector } from '~/hooks/redux'
-import { deleteWallet } from '~/persistent-storage/wallet'
-import { walletDeleted } from '~/store/wallet/walletActions'
+import RootStackParamList from '~/navigation/rootStackRoutes'
+import { deleteWallet, getStoredWallet, getWalletsMetadata, storedWalletExists } from '~/persistent-storage/wallet'
+import { walletDeleted, walletUnlocked, walletsListUpdated } from '~/store/wallet/walletActions'
 import { showExceptionToast } from '~/utils/layout'
+import { resetNavigation } from '~/utils/navigation'
 
 interface WalletDeleteModalProps extends ModalContentProps {
   onDelete: () => void
@@ -37,6 +41,7 @@ interface WalletDeleteModalProps extends ModalContentProps {
 
 const WalletDeleteModal = ({ onDelete, ...props }: WalletDeleteModalProps) => {
   const dispatch = useAppDispatch()
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>()
   const walletName = useAppSelector((s) => s.wallet.name)
   const { resetWalletConnectStorage } = useWalletConnectContext()
 
@@ -51,10 +56,17 @@ const WalletDeleteModal = ({ onDelete, ...props }: WalletDeleteModalProps) => {
     try {
       await deleteWallet()
 
-      onDelete()
+      if (await storedWalletExists()) {
+        const newWallet = await getStoredWallet()
+        dispatch(walletUnlocked(newWallet))
+        dispatch(walletsListUpdated(await getWalletsMetadata()))
+        resetNavigation(navigation, 'InWalletTabsNavigation')
+      } else {
+        onDelete()
+        dispatch(walletDeleted())
+        resetWalletConnectStorage()
+      }
 
-      dispatch(walletDeleted())
-      resetWalletConnectStorage()
       sendAnalytics({ event: 'Deleted wallet' })
     } catch (error) {
       showExceptionToast(error, 'Error while deleting wallet')
