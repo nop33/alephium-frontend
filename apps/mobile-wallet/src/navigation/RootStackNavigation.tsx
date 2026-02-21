@@ -69,7 +69,7 @@ import PublicKeysScreen from '~/screens/PublicKeysScreen'
 import EditWalletNameScreen from '~/screens/Settings/EditWalletName'
 import SettingsScreen from '~/screens/Settings/SettingsScreen'
 import { routeChanged } from '~/store/appSlice'
-import { contactsLoaded, mnemonicMigrated, walletUnlocked, walletsListUpdated } from '~/store/wallet/walletActions'
+import { contactsLoaded, mnemonicMigrated, walletsListUpdated, walletUnlocked } from '~/store/wallet/walletActions'
 import { showExceptionToast, showToast } from '~/utils/layout'
 import { isNavStateRestorable, resetNavigation, rootStackNavigationRef } from '~/utils/navigation'
 

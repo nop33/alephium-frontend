@@ -16,6 +16,7 @@ You should have received a copy of the GNU Lesser General Public License
 along with the library. If not, see <http://www.gnu.org/licenses/>.
 */
 
+import { NavigationProp, useNavigation } from '@react-navigation/native'
 import { useState } from 'react'
 
 import { sendAnalytics } from '~/analytics'
@@ -26,12 +27,10 @@ import { ModalContent, ModalContentProps } from '~/components/layout/ModalConten
 import { BottomModalScreenTitle, ScreenSection } from '~/components/layout/Screen'
 import SpinnerModal from '~/components/SpinnerModal'
 import { useWalletConnectContext } from '~/contexts/walletConnect/WalletConnectContext'
-import { NavigationProp, useNavigation } from '@react-navigation/native'
-
 import { useAppDispatch, useAppSelector } from '~/hooks/redux'
 import RootStackParamList from '~/navigation/rootStackRoutes'
 import { deleteWallet, getStoredWallet, getWalletsMetadata, storedWalletExists } from '~/persistent-storage/wallet'
-import { walletDeleted, walletUnlocked, walletsListUpdated } from '~/store/wallet/walletActions'
+import { walletDeleted, walletsListUpdated, walletUnlocked } from '~/store/wallet/walletActions'
 import { showExceptionToast } from '~/utils/layout'
 import { resetNavigation } from '~/utils/navigation'
 

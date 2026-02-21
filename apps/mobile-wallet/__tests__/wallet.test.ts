@@ -22,10 +22,10 @@ import * as SecureStore from 'expo-secure-store'
 
 import { defaultSecureStoreConfig } from '~/persistent-storage/config'
 import {
+  addWalletMetadata,
   deleteWallet,
   getStoredWallet,
   migrateDeprecatedMnemonic,
-  addWalletMetadata,
   selectWallet,
   storeWalletMetadataDeprecated
 } from '~/persistent-storage/wallet'

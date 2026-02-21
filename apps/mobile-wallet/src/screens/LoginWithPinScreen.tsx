@@ -29,7 +29,7 @@ import RootStackParamList from '~/navigation/rootStackRoutes'
 import { getContacts } from '~/persistent-storage/contacts'
 import { getStoredWallet, getWalletsMetadata, migrateDeprecatedMnemonic } from '~/persistent-storage/wallet'
 import { allBiometricsEnabled } from '~/store/settings/settingsActions'
-import { contactsLoaded, mnemonicMigrated, walletUnlocked, walletsListUpdated } from '~/store/wallet/walletActions'
+import { contactsLoaded, mnemonicMigrated, walletsListUpdated, walletUnlocked } from '~/store/wallet/walletActions'
 import { showExceptionToast } from '~/utils/layout'
 import { resetNavigation } from '~/utils/navigation'
 

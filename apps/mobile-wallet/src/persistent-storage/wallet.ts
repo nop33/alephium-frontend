@@ -47,6 +47,7 @@ import {
   WalletType
 } from '~/types/wallet'
 import { getRandomLabelColor } from '~/utils/colors'
+
 import { storeContacts } from './contacts'
 
 const PIN_WALLET_STORAGE_KEY = 'wallet-pin'
@@ -93,8 +94,8 @@ const migrateToMultiWallet = async () => {
   // Migrate mnemonic
   const legacyMnemonic = await getSecurelyWithReportableError(MNEMONIC_V2_LEGACY, false, '')
   if (legacyMnemonic) {
-     await storeSecurelyWithReportableError(getMnemonicStorageKey(newMetadata.id), legacyMnemonic, true, '')
-     await deleteSecurelyWithReportableError(MNEMONIC_V2_LEGACY, false, '')
+    await storeSecurelyWithReportableError(getMnemonicStorageKey(newMetadata.id), legacyMnemonic, true, '')
+    await deleteSecurelyWithReportableError(MNEMONIC_V2_LEGACY, false, '')
   }
 
   // Delete legacy metadata
@@ -125,7 +126,12 @@ export const addWalletMetadata = async (metadata: WalletMetadata) => {
   await storeWalletsMetadata(wallets)
 }
 
-const generateWalletMetadata = (name: string, firstAddressHash: string, isMnemonicBackedUp = false, type: WalletType = 'mnemonic'): WalletMetadata => ({
+const generateWalletMetadata = (
+  name: string,
+  firstAddressHash: string,
+  isMnemonicBackedUp = false,
+  type: WalletType = 'mnemonic'
+): WalletMetadata => ({
   id: nanoid(),
   name,
   type,
@@ -190,7 +196,7 @@ export const getWalletMetadata = async (): Promise<WalletMetadata | null> => {
   if (!selectedId) return null
 
   const wallets = await getWalletsMetadata()
-  const wallet = wallets.find(w => w.id === selectedId)
+  const wallet = wallets.find((w) => w.id === selectedId)
 
   if (!wallet && wallets.length > 0) {
     // Fallback if selected ID is invalid but wallets exist
@@ -214,7 +220,7 @@ export const updateStoredWalletMetadata = async (partialMetadata: Partial<Wallet
   const updatedWallet = { ...currentWallet, ...partialMetadata }
 
   const wallets = await getWalletsMetadata()
-  const index = wallets.findIndex(w => w.id === updatedWallet.id)
+  const index = wallets.findIndex((w) => w.id === updatedWallet.id)
 
   if (index !== -1) {
     wallets[index] = updatedWallet
@@ -280,7 +286,7 @@ export const deleteWallet = async () => {
   }
 
   const wallets = await getWalletsMetadata()
-  const remainingWallets = wallets.filter(w => w.id !== currentWallet.id)
+  const remainingWallets = wallets.filter((w) => w.id !== currentWallet.id)
 
   if (remainingWallets.length === 0) {
     await deleteFundPassword()
@@ -372,9 +378,9 @@ export const migrateDeprecatedMnemonic = async (deprecatedMnemonic: string) => {
 }
 
 export const storedWalletExists = async (): Promise<boolean> => {
-    await migrateToMultiWallet()
-    const wallets = await getWalletsMetadata()
-    return wallets.length > 0
+  await migrateToMultiWallet()
+  const wallets = await getWalletsMetadata()
+  return wallets.length > 0
 }
 
 export const dangerouslyExportWalletMnemonic = async (): Promise<string> => {
@@ -409,7 +415,6 @@ export const getAddressAsymetricKey = async (addressHash: AddressHash, keyType: 
 
 export const storeWalletMetadataDeprecated = async (metadata: DeprecatedWalletMetadata) =>
   storeWithReportableError(WALLET_METADATA_STORAGE_KEY_LEGACY, JSON.stringify(metadata))
-
 
 const storeAddressPublicKey = async (addressHash: AddressHash, publicKey: string) =>
   storeSecurelyWithReportableError(

@@ -24,8 +24,8 @@ import {
   newWalletImportedWithMetadata,
   walletDeleted,
   walletNameChanged,
-  walletUnlocked,
-  walletsListUpdated
+  walletsListUpdated,
+  walletUnlocked
 } from '~/store/wallet/walletActions'
 import { WalletState } from '~/types/wallet'
 
