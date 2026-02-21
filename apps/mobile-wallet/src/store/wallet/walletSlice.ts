@@ -24,6 +24,7 @@ import {
   newWalletImportedWithMetadata,
   walletDeleted,
   walletNameChanged,
+  walletsListUpdated,
   walletUnlocked
 } from '~/store/wallet/walletActions'
 import { WalletState } from '~/types/wallet'
@@ -33,8 +34,10 @@ const sliceName = 'wallet'
 const initialState: WalletState = {
   id: '',
   name: '',
+  type: 'mnemonic',
   isMnemonicBackedUp: undefined,
-  isUnlocked: false
+  isUnlocked: false,
+  wallets: []
 }
 
 const resetState = () => initialState
@@ -52,15 +55,20 @@ const walletSlice = createSlice({
       .addCase(walletNameChanged, (state, { payload: name }) => {
         state.name = name
       })
+      .addCase(walletsListUpdated, (state, { payload: wallets }) => {
+        state.wallets = wallets
+      })
       .addCase(appBecameInactive, (state) => {
         state.isUnlocked = false
       })
     builder.addMatcher(isAnyOf(appReset, walletDeleted), resetState)
     builder.addMatcher(
       isAnyOf(walletUnlocked, newWalletGenerated, newWalletImportedWithMetadata),
-      (_, { payload: { name, id, isMnemonicBackedUp } }) => ({
+      (state, { payload: { name, id, isMnemonicBackedUp, type } }) => ({
+        ...state,
         id,
         name,
+        type,
         isUnlocked: true,
         isMnemonicBackedUp
       })

@@ -47,6 +47,7 @@ import RootStackParamList from '~/navigation/rootStackRoutes'
 import CurrencySelectModal from '~/screens/CurrencySelectModal'
 import MnemonicModal from '~/screens/Settings/MnemonicModal'
 import WalletDeleteModal from '~/screens/Settings/WalletDeleteModal'
+import WalletListModal from '~/screens/Settings/WalletListModal'
 import SwitchNetworkModal from '~/screens/SwitchNetworkModal'
 import {
   analyticsToggled,
@@ -87,6 +88,7 @@ const SettingsScreen = ({ navigation, ...props }: ScreenProps) => {
   const [isMnemonicModalVisible, setIsMnemonicModalVisible] = useState(false)
   const [isSafePlaceWarningModalOpen, setIsSafePlaceWarningModalOpen] = useState(false)
   const [isWalletDeleteModalOpen, setIsWalletDeleteModalOpen] = useState(false)
+  const [isWalletListModalOpen, setIsWalletListModalOpen] = useState(false)
   const [isThemeSwitchOverlayVisible, setIsThemeSwitchOverlayVisible] = useState(false)
   const [isBiometricsWarningModalOpen, setIsBiometricsWarningModalOpen] = useState(false)
   const [lastToggledBiometricsSetting, setLastToggledBiometricsSetting] = useState<
@@ -265,8 +267,11 @@ const SettingsScreen = ({ navigation, ...props }: ScreenProps) => {
         <ScreenSection>
           <ScreenSectionTitle>Wallet</ScreenSectionTitle>
           <BoxSurface>
-            <Row onPress={() => navigation.navigate('EditWalletNameScreen')} title="Wallet name">
+            <Row onPress={() => setIsWalletListModalOpen(true)} title="Switch wallet">
               <AppText bold>{walletName}</AppText>
+            </Row>
+            <Row onPress={() => navigation.navigate('EditWalletNameScreen')} title="Rename wallet">
+              <Ionicons name="create-outline" size={16} color={theme.font.primary} />
             </Row>
             <Row onPress={() => navigation.navigate('AddressDiscoveryScreen')} title="Scan for active addresses">
               <Ionicons name="chevron-forward-outline" size={16} color={theme.font.primary} />
@@ -383,6 +388,12 @@ const SettingsScreen = ({ navigation, ...props }: ScreenProps) => {
           Content={(props) => (
             <WalletDeleteModal onDelete={() => resetNavigation(navigation, 'LandingScreen')} {...props} />
           )}
+        />
+
+        <BottomModal
+          isOpen={isWalletListModalOpen}
+          onClose={() => setIsWalletListModalOpen(false)}
+          Content={(props) => <WalletListModal onClose={() => setIsWalletListModalOpen(false)} {...props} />}
         />
 
         <BottomModal

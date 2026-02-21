@@ -24,11 +24,22 @@ import {
 } from '@alephium/shared'
 import { nanoid } from 'nanoid'
 
-import { getStoredWallet, updateStoredWalletMetadata } from '~/persistent-storage/wallet'
+import { getWithReportableError, storeWithReportableError } from '~/persistent-storage/utils'
 import { store } from '~/store/store'
 
+const CONTACTS_STORAGE_KEY = 'contacts'
+
+export const getContacts = async (): Promise<Contact[]> => {
+  const rawContacts = await getWithReportableError(CONTACTS_STORAGE_KEY)
+  return rawContacts ? JSON.parse(rawContacts) : []
+}
+
+export const storeContacts = async (contacts: Contact[]) => {
+  await storeWithReportableError(CONTACTS_STORAGE_KEY, JSON.stringify(contacts))
+}
+
 export const persistContact = async (contactData: ContactFormData) => {
-  const { contacts } = await getStoredWallet('Could not persist contact, wallet metadata not found')
+  const contacts = await getContacts()
 
   let contactId = contactData.id
 
@@ -60,7 +71,7 @@ export const persistContact = async (contactData: ContactFormData) => {
 
   console.log('💽 Storing contact in persistent storage')
 
-  await updateStoredWalletMetadata({ contacts })
+  await storeContacts(contacts)
 
   store.dispatch(contactStoredInPersistentStorage({ ...contactData, id: contactId }))
 
@@ -68,7 +79,7 @@ export const persistContact = async (contactData: ContactFormData) => {
 }
 
 export const deleteContact = async (contactId: Contact['id']) => {
-  const { contacts } = await getStoredWallet('Could not delete contact, wallet metadata not found')
+  const contacts = await getContacts()
 
   const storedContactIndex = contacts.findIndex((c) => c.id === contactId)
 
@@ -76,7 +87,7 @@ export const deleteContact = async (contactId: Contact['id']) => {
 
   contacts.splice(storedContactIndex, 1)
 
-  await updateStoredWalletMetadata({ contacts })
+  await storeContacts(contacts)
 
   store.dispatch(contactDeletedFromPersistentStorage(contactId))
 }

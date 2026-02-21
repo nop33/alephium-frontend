@@ -22,12 +22,14 @@ import { AddressMetadataWithHash } from '~/types/addresses'
 
 export type DeprecatedMnemonic = string
 
+export type WalletType = 'mnemonic' | 'watch-only' | 'ledger'
+
 export type WalletMetadata = {
   id: string
   name: string
+  type: WalletType
   isMnemonicBackedUp: boolean
   addresses: AddressMetadataWithHash[]
-  contacts: Contact[]
 }
 
 export type DeprecatedWalletMetadata = {
@@ -41,11 +43,13 @@ export type DeprecatedWalletMetadata = {
 export interface WalletStoredState {
   name: string
   id: string
+  type: WalletType
   isMnemonicBackedUp?: boolean
 }
 
 export interface WalletState extends WalletStoredState {
   isUnlocked: boolean
+  wallets: WalletMetadata[]
 }
 
 export interface DeprecatedWalletState extends WalletState {
