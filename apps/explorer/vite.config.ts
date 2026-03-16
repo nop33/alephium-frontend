@@ -1,10 +1,10 @@
 /// <reference types="vitest" />
 
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vitest/config'
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
 import svgrPlugin from 'vite-plugin-svgr'
 import viteTsconfigPaths from 'vite-tsconfig-paths'
-import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import { defineConfig } from 'vitest/config'
 
 export default defineConfig(({ mode }) => ({
   optimizeDeps: {
@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     viteTsconfigPaths(),
     svgrPlugin({
-      include: '**/*.svg?react',
+      include: '**/*.svg?react'
     }),
     nodePolyfills({
       exclude: mode === 'test' ? ['fs', 'http', 'https'] : [],
