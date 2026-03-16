@@ -3,6 +3,7 @@
   "description": "The Alephium explorer frontend",
   "version": "1.12.1",
   "private": true,
+
   "scripts": {
     "start": "turbo start:app",
     "start:app": "vite",

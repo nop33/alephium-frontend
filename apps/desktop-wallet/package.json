@@ -6,6 +6,7 @@
   "main": "dist-electron/main.js",
   "homepage": "./",
   "private": true,
+
   "repository": {
     "type": "git",
     "url": "git@github.com:alephium/alephium-frontend.git"
