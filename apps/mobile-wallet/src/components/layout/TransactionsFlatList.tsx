@@ -140,7 +140,7 @@ const TransactionsFlatList = forwardRef(function TransactionsFlatList(
                 <ActivityIndicatorStyled size={16} color={theme.font.tertiary} />
               )}
             </InfiniteLoadingIndicator>
-            {confirmedTransactions.length === 0 && !isLoading && (
+            {confirmedTransactions.length === 0 && pendingTransactions.length === 0 && !isLoading && (
               <EmptyPlaceholder style={{ width: '90%' }}>
                 <AppText color="secondary" semiBold>
                   No transactions yet 🤷‍♂️

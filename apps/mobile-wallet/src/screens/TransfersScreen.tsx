@@ -54,6 +54,7 @@ const TransfersScreen = ({ navigation }: ScreenProps) => {
         confirmedTransactions={confirmedTransactions}
         pendingTransactions={pendingTransactions}
         initialNumToRender={8}
+        contentContainerStyle={{ flexGrow: 1 }}
         onScroll={screenScrollHandler}
         onScrollEndDrag={scrollEndHandler}
         ref={listRef}
