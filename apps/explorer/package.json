@@ -83,7 +83,7 @@
     "@types/react-router-dom": "^5.3.0",
     "@vitejs/plugin-react": "^4.3.4",
     "esbuild": "^0.25.0",
-    "eslint": "^8.48.0",
+    "eslint": "^10.0.3",
     "happy-dom": "^7.6.6",
     "rollup-plugin-node-polyfills": "^0.2.1",
     "serve": "^14.1.2",

@@ -54,8 +54,8 @@ const BuyModal = memo(({ id, addressHash }: ModalBaseProp & BuyModalProps) => {
           <Trans t={t} i18nKey="onramperDisclaimer">
             You are about to access 3rd party services provided by
             <ActionLinkStyled onClick={() => openInWebBrowser('https://www.onramper.com')}></ActionLinkStyled> through
-            an in-app browser. Alephium does not control Onramper's services. Onramper's terms and conditions will
-            apply, so please read and understand them before proceeding.
+            an in-app browser. Alephium does not control Onramper&apos;s services. Onramper&apos;s terms and conditions
+            will apply, so please read and understand them before proceeding.
           </Trans>
         ) : (
           t('You can now complete your purchase in the dedicated window!') + ' 🤑'

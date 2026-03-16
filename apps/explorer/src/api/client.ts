@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { NetworkPreset, throttledFetch } from '@alephium/shared'
 import { ExplorerProvider, NodeProvider } from '@alephium/web3'
 

@@ -37,7 +37,7 @@ const DeleteAddressesModal = memo(({ id }: ModalBaseProp) => {
     }
 
     // We want to initialize the selected addresses only once, we don't care if txs come in the meantime that will update the data array
-    // eslint-disable-next-line react-compiler/react-compiler
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoadingSortedAddresses])
 

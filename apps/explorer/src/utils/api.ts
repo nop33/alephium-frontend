@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 export const browsePages = async <T, R>(
   callback: (arg: T, options: { limit: number; page: number }) => Promise<R[]>,
   callbackFirstArg: T,

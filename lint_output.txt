@@ -1,0 +1,102 @@
+
+> alephium-frontend@ lint:fix /app
+> turbo lint:fix
+
+• Packages in scope: @alephium/encryptor, @alephium/eslint-config, @alephium/explorer, @alephium/keyring, @alephium/mobile-wallet, @alephium/shared, @alephium/shared-crypto, @alephium/shared-react, @alephium/typescript-config, @alephium/wallet-dapp-provider, alephium-desktop-wallet
+• Running lint:fix in 11 packages
+• Remote caching disabled
+@alephium/wallet-dapp-provider:lint:fix: cache bypass, force executing 17407ead65529b97
+@alephium/mobile-wallet:lint:fix: cache bypass, force executing 7840563d96c81e96
+@alephium/shared-react:lint:fix: cache bypass, force executing b841b0e85ad21b4b
+@alephium/shared:lint:fix: cache bypass, force executing fa8c6fb299328ac5
+@alephium/explorer:lint:fix: cache bypass, force executing 94804125e01e1719
+@alephium/encryptor:lint:fix: cache bypass, force executing 3817cc741a295667
+@alephium/shared-crypto:lint:fix: cache bypass, force executing 759e48870a1aff1a
+@alephium/keyring:lint:fix: cache bypass, force executing 2786e2e3b9397a4c
+alephium-desktop-wallet:lint:fix: cache bypass, force executing 6e0f56656fd9b5e0
+@alephium/shared:lint:fix:
+@alephium/shared:lint:fix: > @alephium/shared@0.7.11 lint:fix /app/packages/shared
+@alephium/shared:lint:fix: > eslint . --fix --ext .ts
+@alephium/shared:lint:fix:
+@alephium/encryptor:lint:fix:
+@alephium/encryptor:lint:fix: > @alephium/encryptor@0.0.0 lint:fix /app/packages/encryptor
+@alephium/encryptor:lint:fix: > eslint . --fix --ext .ts
+@alephium/encryptor:lint:fix:
+@alephium/mobile-wallet:lint:fix:
+@alephium/mobile-wallet:lint:fix: > @alephium/mobile-wallet@2.4.6 lint:fix /app/apps/mobile-wallet
+@alephium/mobile-wallet:lint:fix: > eslint . --fix --ext .ts,.tsx
+@alephium/mobile-wallet:lint:fix:
+@alephium/shared-crypto:lint:fix:
+@alephium/shared-crypto:lint:fix: > @alephium/shared-crypto@0.7.10 lint:fix /app/packages/shared-crypto
+@alephium/shared-crypto:lint:fix: > eslint . --fix --ext .ts
+@alephium/shared-crypto:lint:fix:
+@alephium/wallet-dapp-provider:lint:fix:
+@alephium/wallet-dapp-provider:lint:fix: > @alephium/wallet-dapp-provider@0.0.0 lint:fix /app/packages/wallet-dapp-provider
+@alephium/wallet-dapp-provider:lint:fix: > eslint . --fix --ext .ts --ignore-pattern 'dist/**'
+@alephium/wallet-dapp-provider:lint:fix:
+alephium-desktop-wallet:lint:fix:
+alephium-desktop-wallet:lint:fix: > alephium-desktop-wallet@3.2.1-rc.1 lint:fix /app/apps/desktop-wallet
+alephium-desktop-wallet:lint:fix: > eslint . --fix --ext .ts,.tsx
+alephium-desktop-wallet:lint:fix:
+@alephium/shared-react:lint:fix:
+@alephium/shared-react:lint:fix: > @alephium/shared-react@0.0.3 lint:fix /app/packages/shared-react
+@alephium/shared-react:lint:fix: > eslint . --fix --ext .ts
+@alephium/shared-react:lint:fix:
+@alephium/explorer:lint:fix:
+@alephium/explorer:lint:fix: > @alephium/explorer@1.12.1 lint:fix /app/apps/explorer
+@alephium/explorer:lint:fix: > eslint . --fix --ext .ts,.tsx
+@alephium/explorer:lint:fix:
+@alephium/keyring:lint:fix:
+@alephium/keyring:lint:fix: > @alephium/keyring@0.0.1 lint:fix /app/packages/keyring
+@alephium/keyring:lint:fix: > eslint . --fix --ext .ts
+@alephium/keyring:lint:fix:
+@alephium/explorer:lint:fix: Browserslist: browsers data (caniuse-lite) is 11 months old. Please run:
+@alephium/explorer:lint:fix:   npx update-browserslist-db@latest
+@alephium/explorer:lint:fix:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+alephium-desktop-wallet:lint:fix: Browserslist: browsers data (caniuse-lite) is 11 months old. Please run:
+alephium-desktop-wallet:lint:fix:   npx update-browserslist-db@latest
+alephium-desktop-wallet:lint:fix:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+@alephium/explorer:lint:fix:
+@alephium/explorer:lint:fix: /app/apps/explorer/src/pages/AddressPage/useIsContract.ts
+@alephium/explorer:lint:fix:   10:14  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+@alephium/explorer:lint:fix:
+@alephium/explorer:lint:fix: ✖ 1 problem (0 errors, 1 warning)
+@alephium/explorer:lint:fix:
+alephium-desktop-wallet:lint:fix:
+alephium-desktop-wallet:lint:fix: /app/apps/desktop-wallet/src/components/AnnouncementBanner.tsx
+alephium-desktop-wallet:lint:fix:   54:16  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+alephium-desktop-wallet:lint:fix:
+alephium-desktop-wallet:lint:fix: /app/apps/desktop-wallet/src/features/modals/modalTypes.ts
+alephium-desktop-wallet:lint:fix:   31:7  warning  'ModalNames' is assigned a value but only used as a type  @typescript-eslint/no-unused-vars
+alephium-desktop-wallet:lint:fix:
+alephium-desktop-wallet:lint:fix: /app/apps/desktop-wallet/src/features/walletConnect/walletConnectContext.tsx
+alephium-desktop-wallet:lint:fix:   426:16  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+alephium-desktop-wallet:lint:fix:
+alephium-desktop-wallet:lint:fix: ✖ 3 problems (0 errors, 3 warnings)
+alephium-desktop-wallet:lint:fix:
+@alephium/mobile-wallet:lint:fix:
+@alephium/mobile-wallet:lint:fix: /app/apps/mobile-wallet/src/components/DeprecatedAuthenticationModal.tsx
+@alephium/mobile-wallet:lint:fix:   94:14  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+@alephium/mobile-wallet:lint:fix:
+@alephium/mobile-wallet:lint:fix: /app/apps/mobile-wallet/src/contexts/walletConnect/WalletConnectContext.tsx
+@alephium/mobile-wallet:lint:fix:   400:16  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+@alephium/mobile-wallet:lint:fix:   463:20  warning  'e' is defined but never used      @typescript-eslint/no-unused-vars
+@alephium/mobile-wallet:lint:fix:
+@alephium/mobile-wallet:lint:fix: /app/apps/mobile-wallet/src/features/ecosystem/DAppDetailsModal.tsx
+@alephium/mobile-wallet:lint:fix:   68:16  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+@alephium/mobile-wallet:lint:fix:
+@alephium/mobile-wallet:lint:fix: /app/apps/mobile-wallet/src/features/ecosystem/dAppMessaging/useHandleDappMessages.ts
+@alephium/mobile-wallet:lint:fix:   24:16  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+@alephium/mobile-wallet:lint:fix:
+@alephium/mobile-wallet:lint:fix: /app/apps/mobile-wallet/src/hooks/useBiometrics.ts
+@alephium/mobile-wallet:lint:fix:   140:12  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+@alephium/mobile-wallet:lint:fix:
+@alephium/mobile-wallet:lint:fix: /app/apps/mobile-wallet/src/navigation/RootStackNavigation.tsx
+@alephium/mobile-wallet:lint:fix:   242:16  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+@alephium/mobile-wallet:lint:fix:
+@alephium/mobile-wallet:lint:fix: /app/apps/mobile-wallet/src/screens/new-wallet/DecryptScannedMnemonicScreen.tsx
+@alephium/mobile-wallet:lint:fix:    99:16  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+@alephium/mobile-wallet:lint:fix:   107:14  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+@alephium/mobile-wallet:lint:fix:
+@alephium/mobile-wallet:lint:fix: ✖ 9 problems (0 errors, 9 warnings)
+@alephium/mobile-wallet:lint:fix:
