@@ -107,7 +107,6 @@ const CheckWordsPage = () => {
       word: WordKey,
       currentSelectedElements: typeof selectedElements
     ) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { [word.key]: _currentElement, ...otherElements } = currentSelectedElements
       const closestElement = Object.values(otherElements).reduce(
         (p, c, i) => {

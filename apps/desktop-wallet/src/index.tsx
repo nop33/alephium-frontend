@@ -36,7 +36,7 @@ import { store } from '@/storage/store'
 
 // The app still behaves as if React 17 is used. This is because
 // `react-custom-scrollbars` is not working with React 18 yet.
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
 // const root = createRoot(document.getElementById('root')!)
 
 ReactDOM.render(

@@ -98,7 +98,7 @@ async function sign(configuration) {
     console.log('---BAT SCRIPT FILE CONTENTS END---\n')
 
     console.log('\nTweaking bat script to add -Xmx and " around args...')
-    batScriptContents = batScriptContents.replace(/java -jar/g, 'java -Xmx2048M -jar').replace(/\$@/g, `"\$@"`)
+    batScriptContents = batScriptContents.replace(/java -jar/g, 'java -Xmx2048M -jar').replace(/\$@/g, '"$@"')
 
     console.log('\n---BAT SCRIPT FILE CONTENTS AFTER TWEAKING START---')
     console.log(batScriptContents)
