@@ -117,7 +117,7 @@
     "@walletconnect/types": "2.11.0",
     "babel-plugin-module-resolver": "^5.0.0",
     "eslint": "^10.0.3",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-react": "^7.37.5",

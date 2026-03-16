@@ -214,14 +214,14 @@ importers:
         specifier: ^10.0.3
         version: 10.0.3
       eslint-config-prettier:
-        specifier: ^9.0.0
-        version: 9.1.0(eslint@10.0.3)
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@10.0.3)
       eslint-plugin-header:
         specifier: ^3.1.1
         version: 3.1.1(eslint@10.0.3)
       eslint-plugin-prettier:
         specifier: ^5.5.5
-        version: 5.5.5(eslint-config-prettier@9.1.0)(eslint@10.0.3)(prettier@3.1.1)
+        version: 5.5.5(eslint-config-prettier@10.1.8)(eslint@10.0.3)(prettier@3.1.1)
       eslint-plugin-react:
         specifier: ^7.37.5
         version: 7.37.5(eslint@10.0.3)
@@ -482,14 +482,14 @@ importers:
         specifier: ^10.0.3
         version: 10.0.3
       eslint-config-prettier:
-        specifier: ^9.0.0
-        version: 9.1.0(eslint@10.0.3)
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@10.0.3)
       eslint-plugin-header:
         specifier: ^3.1.1
         version: 3.1.1(eslint@10.0.3)
       eslint-plugin-prettier:
         specifier: ^5.5.5
-        version: 5.5.5(eslint-config-prettier@9.1.0)(eslint@10.0.3)(prettier@3.1.1)
+        version: 5.5.5(eslint-config-prettier@10.1.8)(eslint@10.0.3)(prettier@3.1.1)
       eslint-plugin-react:
         specifier: ^7.37.5
         version: 7.37.5(eslint@10.0.3)
@@ -831,14 +831,14 @@ importers:
         specifier: ^10.0.3
         version: 10.0.3
       eslint-config-prettier:
-        specifier: ^9.0.0
-        version: 9.1.0(eslint@10.0.3)
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@10.0.3)
       eslint-plugin-header:
         specifier: ^3.1.1
         version: 3.1.1(eslint@10.0.3)
       eslint-plugin-prettier:
         specifier: ^5.5.5
-        version: 5.5.5(eslint-config-prettier@9.1.0)(eslint@10.0.3)(prettier@3.1.1)
+        version: 5.5.5(eslint-config-prettier@10.1.8)(eslint@10.0.3)(prettier@3.1.1)
       eslint-plugin-react:
         specifier: ^7.37.5
         version: 7.37.5(eslint@10.0.3)
@@ -901,14 +901,14 @@ importers:
         specifier: ^10.0.3
         version: 10.0.3
       eslint-config-prettier:
-        specifier: ^9.0.0
-        version: 9.1.0(eslint@10.0.3)
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@10.0.3)
       eslint-plugin-header:
         specifier: ^3.1.1
         version: 3.1.1(eslint@10.0.3)
       eslint-plugin-prettier:
         specifier: ^5.5.5
-        version: 5.5.5(eslint-config-prettier@9.1.0)(eslint@10.0.3)(prettier@3.1.1)
+        version: 5.5.5(eslint-config-prettier@10.1.8)(eslint@10.0.3)(prettier@3.1.1)
       eslint-plugin-react:
         specifier: ^7.37.5
         version: 7.37.5(eslint@10.0.3)
@@ -1034,14 +1034,14 @@ importers:
         specifier: ^10.0.3
         version: 10.0.3
       eslint-config-prettier:
-        specifier: ^9.0.0
-        version: 9.1.0(eslint@10.0.3)
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@10.0.3)
       eslint-plugin-header:
         specifier: ^3.1.1
         version: 3.1.1(eslint@10.0.3)
       eslint-plugin-prettier:
         specifier: ^5.5.5
-        version: 5.5.5(eslint-config-prettier@9.1.0)(eslint@10.0.3)(prettier@3.1.1)
+        version: 5.5.5(eslint-config-prettier@10.1.8)(eslint@10.0.3)(prettier@3.1.1)
       eslint-plugin-react:
         specifier: ^7.37.5
         version: 7.37.5(eslint@10.0.3)
@@ -1134,14 +1134,14 @@ importers:
         specifier: ^10.0.3
         version: 10.0.3
       eslint-config-prettier:
-        specifier: ^9.0.0
-        version: 9.1.0(eslint@10.0.3)
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@10.0.3)
       eslint-plugin-header:
         specifier: ^3.1.1
         version: 3.1.1(eslint@10.0.3)
       eslint-plugin-prettier:
         specifier: ^5.5.5
-        version: 5.5.5(eslint-config-prettier@9.1.0)(eslint@10.0.3)(prettier@3.1.1)
+        version: 5.5.5(eslint-config-prettier@10.1.8)(eslint@10.0.3)(prettier@3.1.1)
       eslint-plugin-react:
         specifier: ^7.37.5
         version: 7.37.5(eslint@10.0.3)
@@ -1222,14 +1222,14 @@ importers:
         specifier: ^10.0.3
         version: 10.0.3
       eslint-config-prettier:
-        specifier: ^9.0.0
-        version: 9.1.0(eslint@10.0.3)
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@10.0.3)
       eslint-plugin-header:
         specifier: ^3.1.1
         version: 3.1.1(eslint@10.0.3)
       eslint-plugin-prettier:
         specifier: ^5.5.5
-        version: 5.5.5(eslint-config-prettier@9.1.0)(eslint@10.0.3)(prettier@3.1.1)
+        version: 5.5.5(eslint-config-prettier@10.1.8)(eslint@10.0.3)(prettier@3.1.1)
       eslint-plugin-react:
         specifier: ^7.37.5
         version: 7.37.5(eslint@10.0.3)
@@ -1297,6 +1297,9 @@ importers:
       eslint:
         specifier: ^10.0.3
         version: 10.0.3
+      eslint-config-prettier:
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@10.0.3)
       eslint-plugin-header:
         specifier: ^3.1.1
         version: 3.1.1(eslint@10.0.3)
@@ -1333,6 +1336,9 @@ importers:
       eslint:
         specifier: ^10.0.3
         version: 10.0.3
+      eslint-config-prettier:
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@10.0.3)
       eslint-plugin-header:
         specifier: ^3.1.1
         version: 3.1.1(eslint@10.0.3)
@@ -12729,27 +12735,6 @@ packages:
     dependencies:
       eslint: 10.0.3
       eslint-config-prettier: 10.1.8(eslint@10.0.3)
-      prettier: 3.1.1
-      prettier-linter-helpers: 1.0.1
-      synckit: 0.11.12
-    dev: true
-
-  /eslint-plugin-prettier@5.5.5(eslint-config-prettier@9.1.0)(eslint@10.0.3)(prettier@3.1.1):
-    resolution: {integrity: sha512-hscXkbqUZ2sPithAuLm5MXL+Wph+U7wHngPBv9OMWwlP8iaflyxpjTYZkmdgB4/vPIhemRlBEoLrH7UC1n7aUw==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      '@types/eslint': '>=8.0.0'
-      eslint: '>=8.0.0'
-      eslint-config-prettier: '>= 7.0.0 <10.0.0 || >=10.1.0'
-      prettier: '>=3.0.0'
-    peerDependenciesMeta:
-      '@types/eslint':
-        optional: true
-      eslint-config-prettier:
-        optional: true
-    dependencies:
-      eslint: 10.0.3
-      eslint-config-prettier: 9.1.0(eslint@10.0.3)
       prettier: 3.1.1
       prettier-linter-helpers: 1.0.1
       synckit: 0.11.12
