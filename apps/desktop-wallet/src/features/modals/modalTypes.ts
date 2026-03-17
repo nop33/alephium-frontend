@@ -28,7 +28,7 @@ import { DisablePasswordRequirementModalProps } from '@/modals/SettingsModal/Dis
 import { TokenDetailsModalProps } from '@/modals/tokenDetails/tokeDetailsTypes'
 import { WalletRemovalModalProps } from '@/modals/WalletRemovalModal'
 
-const ModalNames = {
+export const ModalNames = {
   AddressDetailsModal: 'AddressDetailsModal',
   CSVExportModal: 'CSVExportModal',
   NFTDetailsModal: 'NFTDetailsModal',
