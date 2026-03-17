@@ -1,14 +1,12 @@
-import { resolve } from 'node:path';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactCompilerPlugin from 'eslint-plugin-react-compiler';
 import baseConfig from './base.mjs';
 
-const project = resolve(process.cwd(), 'tsconfig.json');
-
 export default [
   ...baseConfig,
   {
+    files: ['**/*.ts', '**/*.tsx'],
     plugins: {
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
@@ -16,7 +14,6 @@ export default [
     },
     languageOptions: {
       parserOptions: {
-        project,
         ecmaFeatures: {
           jsx: true,
         },
@@ -30,11 +27,6 @@ export default [
       react: {
         pragma: 'React',
         version: '19.1.0',
-      },
-      'import/resolver': {
-        typescript: {
-          project,
-        },
       },
     },
     rules: {

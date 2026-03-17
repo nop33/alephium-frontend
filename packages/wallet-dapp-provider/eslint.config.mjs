@@ -1,2 +1,2 @@
 import baseConfig from '@alephium/eslint-config/base';
-export default [ ...baseConfig ];
+export default [{ ignores: ['dist/'] }, ...baseConfig];
