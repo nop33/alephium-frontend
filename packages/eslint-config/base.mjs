@@ -1,6 +1,6 @@
+import { resolve } from 'node:path';
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import globals from 'globals';
 import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import unusedImportsPlugin from 'eslint-plugin-unused-imports';
@@ -8,7 +8,6 @@ import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort';
 import turboPlugin from 'eslint-plugin-turbo';
 
 export default tseslint.config(
-  { ignores: ['dist/', 'build/', 'coverage/'] },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -20,9 +19,10 @@ export default tseslint.config(
     },
     languageOptions: {
       globals: {
-        ...Object.fromEntries(Object.entries(globals.browser).map(([k, v]) => [k.trim(), v])),
-        ...globals.node,
-        ...globals.jest,
+        browser: true,
+        node: true,
+        jasmine: true,
+        jest: true,
       },
     },
     rules: {
