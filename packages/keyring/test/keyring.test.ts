@@ -25,9 +25,9 @@ const wrongPassword = 'passw1rd'
 
 describe('keyring', function () {
   it('should create an empty instance of the Keyring class', () => {
-    expect(keyring).toBeInstanceOf(Keyring),
-      expect(keyring['hdWallet']).toBeNull(),
-      expect(keyring['addresses']).toHaveLength(0)
+    expect(keyring).toBeInstanceOf(Keyring)
+    expect(keyring['hdWallet']).toBeNull()
+    expect(keyring['addresses']).toHaveLength(0)
   })
 
   it('should get initialized with a random mnemonic', () => {

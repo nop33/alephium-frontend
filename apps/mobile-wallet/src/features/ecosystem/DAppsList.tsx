@@ -96,7 +96,7 @@ const DAppsList = ({ selectedTag, searchText }: DAppsListProps) => {
         <EmptyPlaceholder>
           <AppText size={32}>🧐</AppText>
           <AppText>{t('No dApps match your search')}</AppText>
-          <AppText color="tertiary">"{searchText}"</AppText>
+          <AppText color="tertiary">&quot;{searchText}&quot;</AppText>
           <OpenUrlButton searchText={searchText} />
         </EmptyPlaceholder>
       </DAppsListStyled>

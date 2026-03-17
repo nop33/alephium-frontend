@@ -135,7 +135,7 @@
     "@types/react-native-background-timer": "^2.0.2",
     "@walletconnect/types": "2.23.6",
     "babel-plugin-module-resolver": "^5.0.2",
-    "eslint": "^8.48.0",
+    "eslint": "^10.0.3",
     "jest": "^29.7.0",
     "jest-expo": "~54.0.17",
     "ts-node": "^10.9.1",

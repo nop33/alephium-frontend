@@ -16,6 +16,9 @@ You should have received a copy of the GNU Lesser General Public License
 along with the library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-module.exports = {
-  extends: ['@alephium/eslint-config/react']
-}
+import reactConfig from '@alephium/eslint-config/react';
+
+export default [
+  { ignores: ['node_modules/', 'build/', 'coverage/', 'src/serviceWorker.js', 'src/setupTests.js', 'public/', 'docker/', 'eslint.config.mjs'] },
+  ...reactConfig,
+];
