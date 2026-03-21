@@ -1,6 +1,6 @@
 import { AnalyticsProps, cleanExceptionMessage, getHumanReadableError, throttleEvent } from '@alephium/shared'
-import { nanoid } from 'nanoid'
 import { PostHogCaptureOptions } from '@posthog/core'
+import { nanoid } from 'nanoid'
 import PostHog from 'posthog-react-native'
 import { ReactNode, useCallback, useEffect } from 'react'
 
