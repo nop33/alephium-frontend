@@ -12,3 +12,4 @@ and the cache mechanism in `.github/workflows/ci.yml`.
 Not intended to be merged.
 
 Run 2: warm cache.
+Run 3: variance check.
