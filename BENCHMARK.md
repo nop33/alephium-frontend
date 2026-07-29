@@ -10,3 +10,5 @@ and the cache mechanism in `.github/workflows/ci.yml`.
 - `bench/namespace` - `nscloud-*` runners with a cache volume
 
 Not intended to be merged.
+
+Run 2: warm cache.
