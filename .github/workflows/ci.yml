@@ -11,7 +11,10 @@ concurrency:
 
 jobs:
   lint:
-    runs-on: nscloud-ubuntu-24.04-amd64-4x8-with-cache
+    runs-on:
+      - nscloud-ubuntu-24.04-amd64-4x8-with-cache
+      - nscloud-cache-size-50gb
+      - nscloud-cache-tag-alephium-frontend-linux
     steps:
       - name: Check out Git repository
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
@@ -23,7 +26,10 @@ jobs:
         run: pnpm run lint
 
   typecheck:
-    runs-on: nscloud-ubuntu-24.04-amd64-4x8-with-cache
+    runs-on:
+      - nscloud-ubuntu-24.04-amd64-4x8-with-cache
+      - nscloud-cache-size-50gb
+      - nscloud-cache-tag-alephium-frontend-linux
     steps:
       - name: Check out Git repository
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
@@ -35,7 +41,10 @@ jobs:
         run: pnpm run typecheck
 
   test:
-    runs-on: nscloud-ubuntu-24.04-amd64-4x8-with-cache
+    runs-on:
+      - nscloud-ubuntu-24.04-amd64-4x8-with-cache
+      - nscloud-cache-size-50gb
+      - nscloud-cache-tag-alephium-frontend-linux
     steps:
       - name: Check out Git repository
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
@@ -47,7 +56,10 @@ jobs:
         run: pnpm run test
 
   audit:
-    runs-on: nscloud-ubuntu-24.04-amd64-4x8-with-cache
+    runs-on:
+      - nscloud-ubuntu-24.04-amd64-4x8-with-cache
+      - nscloud-cache-size-50gb
+      - nscloud-cache-tag-alephium-frontend-linux
     steps:
       - name: Check out Git repository
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
@@ -59,7 +71,10 @@ jobs:
         run: pnpm audit --prod
 
   mobile-provider:
-    runs-on: nscloud-ubuntu-24.04-amd64-4x8-with-cache
+    runs-on:
+      - nscloud-ubuntu-24.04-amd64-4x8-with-cache
+      - nscloud-cache-size-50gb
+      - nscloud-cache-tag-alephium-frontend-linux
     steps:
       - name: Check out Git repository
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
@@ -80,11 +95,20 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: nscloud-macos-tahoe-arm64-6x14-with-cache
+          - os:
+              - nscloud-macos-tahoe-arm64-6x14-with-cache
+              - nscloud-cache-size-50gb
+              - nscloud-cache-tag-alephium-frontend-macos
             platform: macos
-          - os: nscloud-ubuntu-24.04-amd64-4x8-with-cache
+          - os:
+              - nscloud-ubuntu-24.04-amd64-4x8-with-cache
+              - nscloud-cache-size-50gb
+              - nscloud-cache-tag-alephium-frontend-linux
             platform: ubuntu
-          - os: nscloud-windows-2022-amd64-4x8-with-cache
+          - os:
+              - nscloud-windows-2022-amd64-4x8-with-cache
+              - nscloud-cache-size-50gb
+              - nscloud-cache-tag-alephium-frontend-windows
             platform: windows
 
     steps:
