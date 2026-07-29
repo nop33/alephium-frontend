@@ -1,0 +1,21 @@
+name: Windows probe
+
+on: pull_request
+
+jobs:
+  win-8x16:
+    runs-on: nscloud-windows-2022-amd64-8x16
+    steps:
+      - run: echo "8x16 started"
+        shell: bash
+
+  win-2x4:
+    runs-on: nscloud-windows-2022-amd64-2x4
+    steps:
+      - run: echo "2x4 started"
+        shell: bash
+
+  linux-control:
+    runs-on: nscloud-ubuntu-24.04-amd64-4x8
+    steps:
+      - run: echo "linux control started"
