@@ -1,0 +1,50 @@
+name: Hardware probe
+
+on: pull_request
+
+jobs:
+  github-hosted:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Report hardware
+        shell: bash
+        run: |
+          echo "=== runner label: ${{ matrix.os }} ==="
+          echo "arch: $(uname -m)   kernel: $(uname -s)"
+          if [ "$(uname -s)" = "Darwin" ]; then
+            echo "cores: $(sysctl -n hw.ncpu)  physical: $(sysctl -n hw.physicalcpu)"
+            echo "mem_bytes: $(sysctl -n hw.memsize)"
+            echo "cpu: $(sysctl -n machdep.cpu.brand_string)"
+          else
+            echo "cores: $(nproc)"
+            grep MemTotal /proc/meminfo 2>/dev/null || echo "mem: $(systeminfo 2>/dev/null | grep -i 'Total Physical' || echo n/a)"
+            grep -m1 'model name' /proc/cpuinfo 2>/dev/null || echo "cpu: n/a"
+          fi
+
+  namespace:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: nscloud-ubuntu-24.04-amd64-4x8
+          - os: nscloud-macos-tahoe-arm64-6x14
+    steps:
+      - name: Report hardware
+        shell: bash
+        run: |
+          echo "=== runner label: ${{ matrix.os }} ==="
+          echo "arch: $(uname -m)   kernel: $(uname -s)"
+          if [ "$(uname -s)" = "Darwin" ]; then
+            echo "cores: $(sysctl -n hw.ncpu)  physical: $(sysctl -n hw.physicalcpu)"
+            echo "mem_bytes: $(sysctl -n hw.memsize)"
+            echo "cpu: $(sysctl -n machdep.cpu.brand_string)"
+          else
+            echo "cores: $(nproc)"
+            grep MemTotal /proc/meminfo
+            grep -m1 'model name' /proc/cpuinfo
+          fi
