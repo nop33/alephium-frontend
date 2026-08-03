@@ -30,7 +30,7 @@ runs:
       uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
       with:
         node-version: ${{ inputs.node-version }}
-        cache: pnpm
+        package-manager-cache: false
 
     - name: 🏗 Setup Expo
       if: ${{ inputs.expo-token }}
@@ -39,12 +39,10 @@ runs:
         eas-version: ${{ inputs.eas-version }}
         token: ${{ inputs.expo-token }}
 
-    - name: ♻️ Restore turbo cache
-      uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+    - name: ♻️ Restore pnpm store and turbo cache
+      uses: namespacelabs/nscloud-cache-action@v1
       with:
-        key: turbo-${{ runner.os }}-${{ github.sha }}
-        restore-keys: |
-          turbo-${{ runner.os }}
+        cache: pnpm
         path: .turbo/cache
 
     - name: 📦 Install dependencies
