@@ -26,17 +26,18 @@ jobs:
         working-directory: apps/mobile-wallet
         run: node -e "require.resolve('@alephium/wallet-dapp-provider/lib/provider.umd.json')"
 
-  audit:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
-
-      - name: 🏗 Setup monorepo
-        uses: ./.github/actions/setup-monorepo
-
-      - name: Audit NPM dependencies
-        run: pnpm audit --prod
+  # Disabled while benchmarking CI. Restore before merging to master.
+  # audit:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out Git repository
+  #       uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+  #
+  #     - name: 🏗 Setup monorepo
+  #       uses: ./.github/actions/setup-monorepo
+  #
+  #     - name: Audit NPM dependencies
+  #       run: pnpm audit --prod
 
   build-desktop-wallet:
     runs-on: ${{ matrix.os }}
@@ -49,8 +50,9 @@ jobs:
             platform: macos
           - os: ubuntu-latest
             platform: ubuntu
-          - os: windows-latest
-            platform: windows
+          # Disabled while benchmarking CI. Restore before merging to master.
+          # - os: windows-latest
+          #   platform: windows
 
     steps:
       - name: Check out Git repository
