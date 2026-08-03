@@ -39,11 +39,13 @@ runs:
         eas-version: ${{ inputs.eas-version }}
         token: ${{ inputs.expo-token }}
 
-    - name: ♻️ Restore pnpm store and turbo cache
+    - name: ♻️ Restore pnpm store
       uses: namespacelabs/nscloud-cache-action@v1
       with:
         cache: pnpm
-        path: .turbo/cache
+
+    - name: 🚀 Enable Turborepo remote cache
+      uses: namespace-actions/setup-turbocache@v0
 
     - name: 📦 Install dependencies
       run: pnpm install --frozen-lockfile
