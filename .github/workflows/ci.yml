@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   checks:
-    runs-on: ubuntu-latest
+    runs-on: namespace-profile-alephium-ci
     steps:
       - name: Check out Git repository
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
@@ -29,7 +29,7 @@ jobs:
 
   # Disabled while benchmarking CI. Restore before merging to master.
   # audit:
-  #   runs-on: ubuntu-latest
+  #   runs-on: namespace-profile-alephium-ci
   #   steps:
   #     - name: Check out Git repository
   #       uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
@@ -47,9 +47,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: macos-latest
+          - os: namespace-profile-alephium-ci-macos
             platform: macos
-          - os: ubuntu-latest
+          - os: namespace-profile-alephium-ci
             platform: ubuntu
           # Disabled while benchmarking CI. Restore before merging to master.
           # - os: windows-latest
